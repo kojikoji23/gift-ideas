@@ -35,7 +35,7 @@ a {
 
 /* 商品一覧 */
 
-.item-contents {
+.gift-contents {
   background-color: #FFF;
   display: flex;
   flex-direction: column;
@@ -43,13 +43,13 @@ a {
   padding: 10vh 0;
 }
 
-.item-contents>.title {
+.gift-contents>.title {
   font-size: 5vh;
   line-height: 1.4;
   font-weight: bold;
 }
 
-.item-contents>.subtitle {
+.gift-contents>.subtitle {
   font-size: 3vh;
   margin: 1vh 0;
   text-decoration: none;
@@ -57,25 +57,25 @@ a {
   font-weight: bold;
 }
 
-.item-lists {
+.gift-lists {
   width: 100vw;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.item-lists>.list {
+.gift-lists>.list {
   width: 37vh;
   padding: 1vw;
   background-color: #FFF;
 }
 
 
-.item-img-content {
+.gift-img-content {
   position: relative;
 }
 
-.item-img {
+.gift-img {
   width: 33vh;
   height: 33vh;
 }
@@ -96,17 +96,17 @@ a {
 }
 
 
-.item-info {
+.gift-info {
   background-color: #FFF;
   color: black;
   padding: 1vw;
 }
 
-.item-name {
+.gift-name {
   font-size: 2.5vh;
 }
 
-.item-price {
+.gift-price {
   font-size: 1.5vh;
   display: flex;
   justify-content: space-between;
