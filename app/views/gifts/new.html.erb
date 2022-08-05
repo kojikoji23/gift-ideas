@@ -5,11 +5,9 @@
   </header>
   <div class="gifts-sell-main">
     <h2 class="gifts-sell-title">ギフト情報を入力</h2>
-    <%= form_with local: true do |f| %>
+    <%= form_with model: @gift, local: true do |f| %>
 
-    <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
-    <%# render 'shared/error_messages', model: f.object %>
-    <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
+    <%= render 'shared/error_messages', model: f.object %>
 
     <%# 商品画像 %>
     <div class="img-upload">
@@ -21,7 +19,7 @@
         <p>
           クリックしてファイルをアップロード
         </p>
-        <%= f.file_field :hoge, id:"gifts-image" %>
+        <%= f.file_field :image, id:"gifts-image" %>
       </div>
     </div>
     <%# /商品画像 %>
@@ -31,19 +29,19 @@
         ギフト名
         <span class="indispensable">必須</span>
       </div>
-      <%= f.text_area :hoge, class:"gifts-text", id:"gifts-name", placeholder:"ギフト名（必須 40文字まで) 例) 麦わら帽子", maxlength:"40" %>
+      <%= f.text_area :title, class:"gifts-text", id:"gifts-name", placeholder:"ギフト名（必須 40文字まで) 例) 麦わら帽子", maxlength:"40" %>
       <div class="gifts-explain">
         <div class="weight-bold-text">
           ギフトの説明
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_area :hoge, class:"gifts-text", id:"gifts-info", placeholder:"ギフトの説明（必須 1,000文字まで）例）2歳になる友人の子供にプレゼントして喜んでもらえました。子供は外で遊ぶことが多いので暑い中でも遊べるように帽子があると助かるとのこと。" ,rows:"7" ,maxlength:"1000" %>
+        <%= f.text_area :content, class:"gifts-text", id:"gifts-info", placeholder:"ギフトの説明（必須 1,000文字まで）例）2歳になる友人の子供にプレゼントして喜んでもらえました。子供は外で遊ぶことが多いので暑い中でも遊べるように帽子があると助かるとのこと。" ,rows:"7" ,maxlength:"1000" %>
       </div>
       <div class="gifts-url">
         <div class="weight-bold-text">
           参考サイト
         </div>
-        <%= f.text_area :hoge, class:"gifts-text", id:"gifts-url", placeholder:"URL" %>
+        <%= f.text_area :url, class:"gifts-text", id:"gifts-url", placeholder:"URL" %>
       </div>
     </div>
     <%# /商品名と商品説明 %>
