@@ -1,0 +1,92 @@
+<div class="gifts-sell-contents">
+  <header class="gifts-sell-header">
+    <%= link_to image_tag('gift-ideas-logo.png' , size: '185x80'), "/" %>
+
+  </header>
+  <div class="gifts-sell-main">
+    <h2 class="gifts-sell-title">ギフト情報を入力</h2>
+    <%= form_with model: @gift, local: true do |f| %>
+
+    <%= render 'shared/error_messages', model: f.object %>
+
+    <%# 商品画像 %>
+    <div class="img-upload">
+      <div class="weight-bold-text">
+        ギフト画像
+        <span class="indispensable">必須</span>
+      </div>
+      <div class="click-upload">
+        <p>
+          クリックしてファイルをアップロード
+        </p>
+        <%= f.file_field :image, id:"gifts-image" %>
+      </div>
+    </div>
+    <%# /商品画像 %>
+    <%# 商品名と商品説明 %>
+    <div class="new-gifts">
+      <div class="weight-bold-text">
+        ギフト名
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :title, class:"gifts-text", id:"gifts-name", placeholder:"ギフト名（必須 40文字まで) 例) 麦わら帽子", maxlength:"40" %>
+      <div class="gifts-explain">
+        <div class="weight-bold-text">
+          ギフトの説明
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :content, class:"gifts-text", id:"gifts-info", placeholder:"ギフトの説明（必須 1,000文字まで）例）2歳になる友人の子供にプレゼントして喜んでもらえました。子供は外で遊ぶことが多いので暑い中でも遊べるように帽子があると助かるとのこと。" ,rows:"7" ,maxlength:"1000" %>
+      </div>
+      <div class="gifts-url">
+        <div class="weight-bold-text">
+          参考サイト
+        </div>
+        <%= f.text_area :url, class:"gifts-text", id:"gifts-url", placeholder:"URL" %>
+      </div>
+    </div>
+    <%# /商品名と商品説明 %>
+
+    <%# 商品の詳細 %>
+    <div class="gifts-detail">
+      <div class="weight-bold-text">ギフトの詳細</div>
+      <div class="form">
+        <div class="weight-bold-text">
+          シーン
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box", id:"gifts-scene"}) %>
+        <div class="weight-bold-text">
+          贈る相手の年齢
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box", id:"gifts-age"}) %>
+        <div class="weight-bold-text">
+          分類
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box", id:"gifts-gender"}) %>
+        <div class="weight-bold-text">
+          価格帯
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box", id:"gifts-price"}) %>
+      </div>
+    </div>
+    <%# /商品の詳細 %>
+
+    <%# 下部ボタン %>
+    <div class="post-btn-contents">
+      <%= f.submit "保存する" ,class:"post-btn" %>
+      <%=link_to 'もどる', root_path, class:"back-btn" %>
+    </div>
+    <%# /下部ボタン %>
+  </div>
+  <% end %>
+
+  <footer class="gifts-sell-footer">
+    <%= link_to image_tag('gift-ideas-logo.png' , size: '185x80'), "/" %>
+    <p class="inc">
+      ©︎GIFT-IDEAS.
+    </p>
+  </footer>
+</div>

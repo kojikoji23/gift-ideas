@@ -1,5 +1,5 @@
 class GiftsController < ApplicationController
-  before_action :move_to_index, except: [:index, :show]
+  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
 
   def index
     @gifts = Gift.order('created_at DESC')
@@ -22,15 +22,34 @@ class GiftsController < ApplicationController
     @gift = Gift.find(params[:id])
   end
 
+  def edit
+    @gift = Gift.find(params[:id])
+    unless @gift.user_id == current_user.id
+      redirect_to action: :index
+    end
+  end
+
+  def update
+    @gift = Gift.find(params[:id])
+    if @gift.update(gift_params)
+      redirect_to gift_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @gift = Gift.find(params[:id])
+    unless @gift.user_id == current_user.id
+      redirect_to action: :index
+    end
+    @gift.destroy
+    redirect_to root_path
+  end
+
   private
   def gift_params
     params.require(:gift).permit(:title, :content, :url, :image).merge(user_id: current_user.id)
-  end
-
-  def move_to_index
-    unless user_signed_in?
-      redirect_to action: :index
-    end
   end
   
 end

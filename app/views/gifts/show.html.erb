@@ -12,9 +12,9 @@
 
     <%# ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
 
-    <%= link_to "編集", "#", method: :get, class: "gift-red-btn" %>
+    <%= link_to "編集", edit_gift_path(@gift.id), method: :get, class: "gift-red-btn" %>
     <p class="or-text">or</p>
-    <%= link_to "削除", "#", method: :delete, class:"gift-destroy" %>
+    <%= link_to "削除", gift_path(@gift.id), method: :delete, class:"gift-destroy" %>
 
     <%# //ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
 
