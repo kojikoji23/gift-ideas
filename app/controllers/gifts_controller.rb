@@ -18,6 +18,10 @@ class GiftsController < ApplicationController
     end
   end
 
+  def show
+    @gift = Gift.find(params[:id])
+  end
+
   private
   def gift_params
     params.require(:gift).permit(:title, :content, :url, :image).merge(user_id: current_user.id)
