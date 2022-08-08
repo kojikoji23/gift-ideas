@@ -10,4 +10,5 @@ class User < ApplicationRecord
   validates :password, format: { with: VALID_PASSWORD_REGEX, message: 'Include both letters and numbers' }
 
   has_many :gifts
+  has_many :comments
 end

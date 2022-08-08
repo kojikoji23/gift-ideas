@@ -3,5 +3,7 @@ Rails.application.routes.draw do
   get 'gifts/index'
   root to: "gifts#index"
 
-  resources :gifts
+  resources :gifts do
+    resources :comments, only: :create
+  end
 end
