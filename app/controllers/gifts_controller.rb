@@ -1,5 +1,7 @@
 class GiftsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
+  before_action :set_gift, only: [:show, :edit, :update, :destroy]
+  before_action :set_id, only: [:edit, :destroy]
 
   def index
     @gifts = Gift.order('created_at DESC')
@@ -19,18 +21,14 @@ class GiftsController < ApplicationController
   end
 
   def show
-    @gift = Gift.find(params[:id])
+    @comment = Comment.new
+    @comments = @gift.comments.includes(:user)
   end
 
   def edit
-    @gift = Gift.find(params[:id])
-    unless @gift.user_id == current_user.id
-      redirect_to action: :index
-    end
   end
 
   def update
-    @gift = Gift.find(params[:id])
     if @gift.update(gift_params)
       redirect_to gift_path
     else
@@ -39,12 +37,16 @@ class GiftsController < ApplicationController
   end
 
   def destroy
-    @gift = Gift.find(params[:id])
-    unless @gift.user_id == current_user.id
-      redirect_to action: :index
-    end
     @gift.destroy
     redirect_to root_path
+  end
+
+  def set_gift
+    @gift = Gift.find(params[:id])
+  end
+
+  def set_id
+    redirect_to root_path if @gift.user_id != current_user.id
   end
 
   private

@@ -125,67 +125,53 @@
 
 /* /商品の概要 */
 
-.comment-box {
-  width: 40vw;
-  background-color: #fff;
-  margin: 5vh 0;
-  text-align: center;
-}
-
-.comment-text {
+form input,
+f.text_field {
   width: 100%;
-  height: 100px;
+  margin: 5px 0 15px;
   padding: 10px;
-  border: solid 2px #dedede;
-  resize: none;
+  border: 1px solid #D8D8D8;
+  border-radius: 5px;
 }
 
-.comment-warn {
-  padding: 10px;
-  font-size: 14px;
-  margin: 10px 0px;
-  text-align: left;
-}
-
-.comment-btn {
-  line-height: 48px;
-  background-color: #3CCACE;
-  border: 1px solid #3CCACE;
+form input[type="submit"] {
+  background-color: #57C3E9;
+  border-radius: 20px;
   color: #fff;
-  width: 50%;
-  min-width: 150px;
+  border: 0;
   font-size: 18px;
-  border-radius: 100px;
-  margin-bottom: 2vh;
 }
 
-.comment-flag {
-  display: flex;
-  justify-content: center;
+form input[type="submit"]:hover {
+  background-color: #84d3ef;
 }
 
-.comment-flag-icon {
-  margin: 10px 5px 0 0;
+.container {
+  margin: 20px 0;
+  padding: 30px;
+  box-shadow: 0 0 10px rgba(41, 41, 41, 0.2);
+  background-color: white;
+  box-sizing: border-box;
+  width: 70vw;
 }
 
-.links {
-  display: flex;
-  justify-content: space-between;
-  width: 50vw;
-
+.container h3 {
+  margin: 0 0 20px;
+  text-align: center;
+  font-weight: normal;
+  font-size: 20px;
+  color: #666;
 }
 
-.change-item-btn {
-  font-size: 30px;
-  text-decoration: none;
-  color: #3CCACE;
+.comments {
+  padding: 5px;
+  margin-top: 15px;
 }
 
-.another-item {
-  display: block;
-  margin: 30px 0px 8px;
-  color: #3CCACE;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 23px;
+.comments a {
+  color: #57C3E9;
+}
+
+.comments a:hover {
+  text-decoration: underline;
 }
