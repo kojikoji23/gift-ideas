@@ -25,7 +25,7 @@
 
       <% @gifts.each do |gift| %>
       <li class='list'>
-        <%= link_to "#" do %>
+        <%= link_to gift_path(gift.id) do %>
         <div class='gift-img-content'>
           <%= image_tag gift.image, class: "gift-img" %>
 
