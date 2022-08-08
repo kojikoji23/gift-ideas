@@ -59,7 +59,7 @@
 .gift-explain-box {
   font-size: 18px;
   margin: 40px 0px;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
 }
 
 .detail-table {
