@@ -8,13 +8,14 @@ class GiftsController < ApplicationController
   end
 
   def new
-    @gift = Gift.new
+    @gift_form = GiftForm.new
   end
 
   def create
-    @gift = Gift.new(gift_params)
-    if @gift.save
-      redirect_to root_path
+    @gift_form = GiftForm.new(gift_form_params)
+    if @gift_form.valid?
+       @gift_form.save
+       redirect_to root_path
     else
       render :new
     end
@@ -50,8 +51,8 @@ class GiftsController < ApplicationController
   end
 
   private
-  def gift_params
-    params.require(:gift).permit(:title, :content, :url, :image).merge(user_id: current_user.id)
+  def gift_form_params
+    params.require(:gift_form).permit(:title, :content, :url, :image).merge(user_id: current_user.id)
   end
   
 end
