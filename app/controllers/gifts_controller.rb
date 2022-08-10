@@ -27,10 +27,17 @@ class GiftsController < ApplicationController
   end
 
   def edit
+    gift_attributes = @gift.attributes
+    @gift_form = GiftForm.new(gift_attributes)
   end
 
   def update
-    if @gift.update(gift_params)
+    @gift_form = GiftForm.new(gift_form_params)
+
+    @gift_form.image ||= @gift.image.blob
+
+    if @gift_form.valid?
+      @gift_form.update(gift_form_params, @gift)
       redirect_to gift_path
     else
       render :edit
