@@ -5,7 +5,7 @@
   </header>
   <div class="gifts-sell-main">
     <h2 class="gifts-sell-title">ギフト情報を入力</h2>
-    <%= form_with model: @gift, local: true do |f| %>
+    <%= form_with model: @gift_form, url: gift_path(@gift.id), method: :patch, local: true do |f| %>
 
     <%= render 'shared/error_messages', model: f.object %>
 
@@ -54,22 +54,22 @@
           シーン
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box", id:"gifts-scene"}) %>
+        <%= f.collection_select(:scene_id, Scene.all, :id, :name, {}, {class:"select-box", id:"gifts-scene"}) %>
         <div class="weight-bold-text">
           贈る相手の年齢
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box", id:"gifts-age"}) %>
+        <%= f.collection_select(:age_id, Age.all, :id, :name, {}, {class:"select-box", id:"gifts-age"}) %>
         <div class="weight-bold-text">
           分類
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box", id:"gifts-gender"}) %>
+        <%= f.collection_select(:gender_id, Gender.all, :id, :name, {}, {class:"select-box", id:"gifts-gender"}) %>
         <div class="weight-bold-text">
           価格帯
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:hoge, [], :hoge, :hoge, {}, {class:"select-box", id:"gifts-price"}) %>
+        <%= f.collection_select(:price_id, Price.all, :id, :name, {}, {class:"select-box", id:"gifts-price"}) %>
       </div>
     </div>
     <%# /商品の詳細 %>
@@ -77,7 +77,7 @@
     <%# 下部ボタン %>
     <div class="post-btn-contents">
       <%= f.submit "保存する" ,class:"post-btn" %>
-      <%=link_to 'もどる', root_path, class:"back-btn" %>
+      <%=link_to 'もどる', gift_path, class:"back-btn" %>
     </div>
     <%# /下部ボタン %>
   </div>
