@@ -37,19 +37,19 @@
         </tr>
         <tr>
           <th class="detail-gift">シーン</th>
-          <td class="detail-value"><%= "シーン" %></td>
+          <td class="detail-value"><%= @gift.tags.first.scene.name %></td>
         </tr>
         <tr>
           <th class="detail-gift">年齢</th>
-          <td class="detail-value"><%= "贈る相手の年齢" %></td>
+          <td class="detail-value"><%= @gift.tags.first.age.name %></td>
         </tr>
         <tr>
           <th class="detail-gift">分類</th>
-          <td class="detail-value"><%= "分類" %></td>
+          <td class="detail-value"><%= @gift.tags.first.gender.name %></td>
         </tr>
         <tr>
           <th class="detail-gift">価格帯</th>
-          <td class="detail-value"><%= "価格帯" %></td>
+          <td class="detail-value"><%= @gift.tags.first.price.name %></td>
         </tr>
       </tbody>
     </table>

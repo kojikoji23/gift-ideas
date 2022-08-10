@@ -29,6 +29,10 @@ class GiftsController < ApplicationController
   def edit
     gift_attributes = @gift.attributes
     @gift_form = GiftForm.new(gift_attributes)
+    @gift_form.scene_id = @gift.tags.first.scene_id
+    @gift_form.age_id = @gift.tags&.first&.age_id
+    @gift_form.gender_id = @gift.tags&.first&.gender_id
+    @gift_form.price_id = @gift.tags&.first&.price_id
   end
 
   def update
@@ -59,7 +63,7 @@ class GiftsController < ApplicationController
 
   private
   def gift_form_params
-    params.require(:gift_form).permit(:title, :content, :url, :image).merge(user_id: current_user.id)
+    params.require(:gift_form).permit(:title, :content, :url, :image, :age_id, :gender_id, :scene_id, :price_id).merge(user_id: current_user.id)
   end
   
 end
