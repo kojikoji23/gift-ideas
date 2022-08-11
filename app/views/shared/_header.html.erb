@@ -4,11 +4,15 @@
     <%= link_to image_tag("gift-ideas-logo.png", class:"gift-ideas-icon"), "/" %>
   </div>
   <div class='nav'>
-    <ul class='lists-left'>
-      <li><%= link_to 'シーンから選ぶ', "#", class: "scene-list" %></li>
-      <li><%= link_to '贈る相手から選ぶ', "#", class: "age-list" %></li>
-      <li><%= link_to '価格帯から選ぶ', "#", class: "price-list" %></li>
-    </ul>
+<%= form_tag gifts_path, method: :get, class: 'boards__searchForm' do %>
+      <%= select_tag :scene_id,
+                     options_from_collection_for_select(Scene.all, :id, :name, params[:scene_id]),
+                     {
+                       prompt: 'タグで絞り込み検索',
+                       onchange: 'submit(this.form);'
+                     }
+      %>
+    <% end %>
     <ul class='lists-right'>
       <% if user_signed_in? %>
         <li><%= link_to current_user.nickname, "#", class: "user-nickname" %></li>
