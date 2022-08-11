@@ -4,18 +4,22 @@ class GiftsController < ApplicationController
   before_action :set_id, only: [:edit, :destroy]
 
   def index
-    @gifts = Gift.order('created_at DESC')
+    if params[:scene_id]
+      @category = Scene.find(params[:scene_id])       
+      @gifts = @category.gifts.order(created_at: :desc).all
+    else
+      @gifts = Gift.order(created_at: :desc).all
+    end
   end
 
   def new
-    @gift_form = GiftForm.new
+    @gift = Gift.new
   end
 
   def create
-    @gift_form = GiftForm.new(gift_form_params)
-    if @gift_form.valid?
-       @gift_form.save
-       redirect_to root_path
+    @gift = Gift.new(gift_params)
+    if @gift.save
+      redirect_to root_path
     else
       render :new
     end
@@ -27,21 +31,10 @@ class GiftsController < ApplicationController
   end
 
   def edit
-    gift_attributes = @gift.attributes
-    @gift_form = GiftForm.new(gift_attributes)
-    @gift_form.scene_id = @gift.tags.first.scene_id
-    @gift_form.age_id = @gift.tags&.first&.age_id
-    @gift_form.gender_id = @gift.tags&.first&.gender_id
-    @gift_form.price_id = @gift.tags&.first&.price_id
   end
 
   def update
-    @gift_form = GiftForm.new(gift_form_params)
-
-    @gift_form.image ||= @gift.image.blob
-
-    if @gift_form.valid?
-      @gift_form.update(gift_form_params, @gift)
+    if @gift.update(gift_params)
       redirect_to gift_path
     else
       render :edit
@@ -62,8 +55,8 @@ class GiftsController < ApplicationController
   end
 
   private
-  def gift_form_params
-    params.require(:gift_form).permit(:title, :content, :url, :image, :age_id, :gender_id, :scene_id, :price_id).merge(user_id: current_user.id)
+  def gift_params
+    params.require(:gift).permit(:title, :content, :url, :image, :price_id, :gender_id, :age_id, :scene_id).merge(user_id: current_user.id)
   end
   
 end

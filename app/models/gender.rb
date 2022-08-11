@@ -1,11 +1,10 @@
 class Gender < ActiveHash::Base
   self.data = [
-    { id: 1, name: '---' },
-    { id: 2, name: 'メンズ' },
-    { id: 3, name: 'レディース' },
-    { id: 4, name: 'ユニセックス' },
+    { id: 1, name: 'メンズ' },
+    { id: 2, name: 'レディース' },
+    { id: 3, name: 'ユニセックス' },
   ]
 
   include ActiveHash::Associations
-  has_many :tags
+  has_many :gifts
   end
