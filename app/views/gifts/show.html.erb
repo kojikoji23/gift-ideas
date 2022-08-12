@@ -11,7 +11,7 @@
     </div>
 
     <% if current_user.id == @gift.user_id %>
-      <%= link_to "編集", edit_gift_path(@gift.id), method: :get, class: "gift-red-btn" %>
+      <%= link_to "編集", edit_gift_path(@gift.id), method: :get, class: "gift-green-btn" %>
       <p class="or-text">or</p>
       <%= link_to "削除", gift_path(@gift.id), method: :delete, class:"gift-destroy" %>
     <% end %>

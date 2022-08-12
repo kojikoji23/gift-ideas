@@ -18,6 +18,7 @@
 .gift-ideas-icon {
   width: 10vw;
   margin-right: 10vw;
+  border-radius: 10px;
 }
 
 .nav {
@@ -35,21 +36,52 @@
 
 }
 
-.scene-list {
-  text-decoration: none;
-  margin-right: 3vw;
-  color: #333333;
+.cp_ipselect {
+  overflow: hidden;
+  width: 50%;
+  margin: 2em auto;
+  text-align: center;
 }
-
-.age-list {
-  text-decoration: none;
-  margin-right: 3vw;
-  color: #333333;
+.cp_ipselect select {
+  width: 100%;
+  padding-right: 1em;
+  cursor: pointer;
+  text-indent: 0.01px;
+  text-overflow: ellipsis;
+  border: none;
+  outline: none;
+  background: transparent;
+  background-image: none;
+  box-shadow: none;
+  -webkit-appearance: none;
+  appearance: none;
 }
-
-.price-list {
-  text-decoration: none;
-  color: #333333;
+.cp_ipselect select::-ms-expand {
+    display: none;
+}
+.cp_ipselect.cp_sl01 {
+  position: relative;
+  border-radius: 2px;
+  border: 2px solid #00cc99;
+  border-radius: 50px;
+  background: #ffffff;
+}
+.cp_ipselect.cp_sl01::before {
+  position: absolute;
+  top: 0.8em;
+  right: 0.8em;
+  width: 0;
+  height: 0;
+  padding: 0;
+  content: '';
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid skyblue;
+  pointer-events: none;
+}
+.cp_ipselect.cp_sl01 select {
+  padding: 8px 38px 8px 8px;
+  color: black;
 }
 
 .lists-right {
@@ -82,4 +114,20 @@
 .sign-up {
   text-decoration: none;
   color: #333333;
+}
+
+/* スマホ表示時 */
+@media (max-width: 599px) {
+  .gift-ideas-icon {
+    width: 100px;
+    margin-right: 10vw;
+    border-radius: 10px;
+  }
+
+  .lists-right {
+    display: flex;
+    list-style: none;
+    align-items: flex-end;
+    font-size: 10px;
+  }
 }

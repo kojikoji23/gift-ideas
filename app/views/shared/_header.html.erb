@@ -4,11 +4,11 @@
     <%= link_to image_tag("gift-ideas-logo.png", class:"gift-ideas-icon"), "/" %>
   </div>
   <div class='nav'>
-<%= form_tag gifts_path, method: :get, class: 'boards__searchForm' do %>
+    <%= form_tag gifts_path, method: :get, class: 'cp_ipselect cp_sl01' do %>
       <%= select_tag :scene_id,
                      options_from_collection_for_select(Scene.all, :id, :name, params[:scene_id]),
                      {
-                       prompt: 'タグで絞り込み検索',
+                       prompt: 'SELECT SCENE',
                        onchange: 'submit(this.form);'
                      }
       %>

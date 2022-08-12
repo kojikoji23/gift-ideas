@@ -10,6 +10,7 @@ class GiftsController < ApplicationController
     else
       @gifts = Gift.order(created_at: :desc).all
     end
+    
   end
 
   def new
