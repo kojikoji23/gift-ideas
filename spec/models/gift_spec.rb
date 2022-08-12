@@ -32,6 +32,26 @@ RSpec.describe Gift, type: :model do
         @gift.valid?
         expect(@gift.errors.full_messages).to include("Image can't be blank")
       end
+      it 'priceが空では登録できない' do
+        @gift.price_id = ''
+        @gift.valid?
+        expect(@gift.errors.full_messages).to include("Price can't be blank")
+      end
+      it 'genderが空では登録できない' do
+        @gift.gender_id = ''
+        @gift.valid?
+        expect(@gift.errors.full_messages).to include("Gender can't be blank")
+      end
+      it 'sceneが空では登録できない' do
+        @gift.scene_id = ''
+        @gift.valid?
+        expect(@gift.errors.full_messages).to include("Scene can't be blank")
+      end
+      it 'ageが空では登録できない' do
+        @gift.age_id = ''
+        @gift.valid?
+        expect(@gift.errors.full_messages).to include("Age can't be blank")
+      end
       it 'userが紐付いていないと保存できない' do
         @gift.user = nil
         @gift.valid?

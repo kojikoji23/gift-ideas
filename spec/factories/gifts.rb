@@ -3,6 +3,10 @@ FactoryBot.define do
     title { Faker::Lorem.sentence }
     content { Faker::Lorem.sentence }
     url { Faker::Internet.url }
+    age_id { 2 }
+    scene_id { 2 }
+    gender_id { 2 }
+    price_id { 2 }
 
     association :user
 
